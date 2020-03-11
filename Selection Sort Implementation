@@ -1,0 +1,66 @@
+#include <iostream>
+#include <iomanip>
+#include <string>
+#include <fstream>
+#include <cmath>
+#include <cstring>
+
+
+	using namespace std;
+	int list[20];
+	void selectionSort(int n);
+
+
+	int main()
+	{
+	 int n,i;
+
+
+	 cout<<"Enter the number of element of your array:";
+	 cin>>n;
+	 cout<<"\n\n";
+
+
+	 cout<<"Enter the "<<n<<" elements:"<<endl;
+	 for (int i=0;i<n;i++)
+	 {
+	    cout<<"Enter the element for ["<<i<<"] position:";
+	    cin>>list[i];
+
+
+	 }
+	 cout<<"\n\n";
+
+
+		selectionSort(n);
+
+        cout<<"The sorting array is:";
+        for(int zn=0;zn<n;zn++)
+        cout<<" "<<list[zn];
+
+
+		return 0;
+	}
+
+
+	void selectionSort(int n) {
+		int index;
+		int smallestIndex;
+		int location;
+		int temp;
+
+
+		for (index = 0; index < n - 1; index++) {
+			// step a (find smallest element)
+			smallestIndex = index;
+			for (location = index + 1; location < n; location++) {
+				if (list[location] < list[smallestIndex]) {
+					smallestIndex = location;
+				}
+			}
+			// step b (swap elements)
+			temp = list[smallestIndex];
+			list[smallestIndex] = list[index];
+			list[index] = temp;
+		}
+	}
